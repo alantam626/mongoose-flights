@@ -6,7 +6,7 @@ const destinationSchema = new Schema({
     airport: {
         type: String,
         enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
-    }
+    },
     arrival: {
         type: Date,
     }
@@ -36,6 +36,8 @@ const flightSchema = new Schema({
     destinations: {
         type: [destinationSchema]
     }
+},{
+    timestamps: true
 })
 
 module.exports = mongoose.model('Flight', flightSchema);

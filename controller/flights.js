@@ -15,16 +15,13 @@ function create(req, res) {
     const flightProperties = new Flight(req.body)
     flightProperties.save(function(err) {
         console.log(err)
-        if (err) return res.render('flights/new', {
-        title: 'Mongoose Flights',
-        })
-        res.redirect('/flights/new')
+        if (err) return res.render('flights/new')
+        res.redirect('/flights')
     })
 }
 
 function index(req, res) {
     Flight.find({}, function(err, flights) {
-        console.log("HELLO")
         res.render('flights/index', {
             title: 'All Flights',
             flights
